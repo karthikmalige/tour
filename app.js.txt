@@ -1,0 +1,31 @@
+import React, { useState, useEffect } from "react";
+import Loading from "./Loading";
+import Tours from "./Tours";
+const url = "https://course-api.com/react-tours-project";
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [tours, setTours] = useState([]);
+
+  const fetchlike = async () => {
+    const response = await fetch(url);
+    const newwork = await response.json();
+    setTours(newwork);
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetchlike();
+  }, []);
+  if (loading) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Tours tours={tours} />
+    </div>
+  );
+};
+export default App;

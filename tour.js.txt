@@ -1,0 +1,16 @@
+import React, { useState } from "react";
+const Tour = ({ image, id, name, info, price }) => {
+  const [readmore, setReadmore]=useState(false);
+  return (
+    <div>
+      <img src={image} alt={name} />
+      <h2 className="tour-info1">{name}</h2>
+      <h3 className="tour-info2">{price}</h3>
+      <p className="tour-info3">
+      {readmore?info:`${info.substring(0,200)}...`}
+      <button onClick={()=>setReadmore(!readmore)}>{readmore?'showless':'readmore'}</button>
+      </p>
+    </div>
+  );
+};
+export default Tour;

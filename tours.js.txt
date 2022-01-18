@@ -1,0 +1,12 @@
+import React from "react";
+import Tour from "./Tour";
+const Tours = ({ tours }) => {
+  return (
+    <div>
+      {tours.map((data) => {
+        return <Tour key={data.id} {...data} />;
+      })}
+    </div>
+  );
+};
+export default Tours;
